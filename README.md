@@ -1,5 +1,5 @@
 # resume
  Resume Redirect
 
-Credits
+Credits - <br />
 [tusharnankani/resume](https://github.com/tusharnankani/resume)
