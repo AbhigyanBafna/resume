@@ -1,0 +1,52 @@
+name: build-deploy-pdf
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/**"
+      - "**.tex"
+      - "**.html"
+      - "CNAME"
+      - "fonts/**"
+      - "profilePicture.jpg"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/**"
+      - "**.tex"
+      - "**.html"
+      - "CNAME"
+      - "fonts/**"
+      - "profilePicture.jpg"
+  workflow_dispatch:
+
+jobs:
+  build-latex:
+    runs-on: ubuntu-latest
+    container:
+      image: danteev/texlive:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+      - name: Post Processing
+        run: |
+          mkdir build
+          cp main.pdf build/Abhigyan_Bafna.pdf
+          cp index.html build/
+          cp CNAME build/
+          cp -r fonts build/
+          cp profilePicture.jpg build/
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true
