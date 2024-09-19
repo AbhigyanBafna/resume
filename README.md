@@ -1,6 +1,6 @@
 # resume
- Resume Redirect
- [Link](https://abhigyanbafna.github.io/resume/Abhigyan_Bafna.pdf)
+ - Base Resume: [resume.abhigyan.tech](https://resume.abhigyan.tech)
 
 Credits - <br />
-[tusharnankani/resume](https://github.com/tusharnankani/resume)
+ - jai-dewani/resume
+ - nicolas3355/cv.github.io
